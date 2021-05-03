@@ -15,14 +15,14 @@
 <style scoped>
     .sidebar
     {
-        flex-grow: 1;
         display: flex;
         align-self: stretch;
         flex-flow: column nowrap;
+        flex-grow: 1;
 
-        width: 75px;
-        min-width: 75px;
-        max-width: 80px;
+        width: 55px;
+        min-width: 50px;
+        max-width: 60px;
         padding-top: 30px;
         padding-bottom: 5px;
 
@@ -31,17 +31,20 @@
 
     .sidebar__button
     {
+        font-size: 1.7em;
+
         display: flex;
-        justify-content: center;
         align-items: center;
-        font-size: 2em;
-        padding: 10px 0;
-        cursor: pointer;
+        justify-content: center;
+
         height: 60px;
         margin: 5px 0;
-        color: white;
+        padding: 10px 0;
 
+        cursor: pointer;
         transition: 0.3s background-color;
+
+        color: white;
     }
 
     .sidebar__button:not(.disabled):hover
@@ -52,6 +55,7 @@
     .sidebar__button.disabled
     {
         cursor: default;
+
         opacity: 0.3;
     }
     .sidebar__button.setting

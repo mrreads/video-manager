@@ -20,8 +20,13 @@ body
 #app
 {
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row nowrap;
     min-height: 100%;
-    
+
+    flex-grow: 1;
+}
+
+.content
+{
     flex-grow: 1;
 }
