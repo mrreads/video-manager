@@ -1,8 +1,9 @@
 <template>
   <div class="info">
     <h1>Выбрать видео</h1>
-    <h2> {{ this.$store.getters.getVideoPath }} </h2>
+    <h4> Путь: {{ this.$store.getters.getVideoPath }} </h4>
     <el-button @click="openFileLoadModal">Загрузить видео</el-button>
+    <el-button @click="deleteVideoPath">Удалить видео</el-button>
   </div>
 </template>
 

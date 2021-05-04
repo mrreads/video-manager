@@ -1,18 +1,22 @@
 <template>
   <div class="sidebar">
-    <router-link to="/info" class="sidebar__button"
-      ><i class="el-icon-film"></i
-    ></router-link>
+    <router-link to="/info" class="sidebar__button"> <i class="el-icon-film"></i></router-link>
 
-    <router-link to="/cut" class="sidebar__button disabled"
-      ><i class="el-icon-scissors"></i
-    ></router-link>
+    <router-link v-if="videoIsLoaded" to="/cut" 
+    class="sidebar__button" :class="videoIsLoaded ? '' : 'disabled'"><i class="el-icon-scissors"></i></router-link>
+    <div v-else class="sidebar__button disabled"> <i class="el-icon-scissors"></i> </div>
 
-    <router-link to="/setting" class="sidebar__button setting"
-      ><i class="el-icon-s-tools"></i
-    ></router-link>
+    <router-link to="/setting" class="sidebar__button setting"><i class="el-icon-s-tools"></i></router-link>
   </div>
 </template>
+
+<script>
+  export default {
+    computed: {
+      videoIsLoaded: function() { return this.$store.getters.getVideoPath != null }
+    }
+  }
+</script>
 
 <style scoped>
 .sidebar {
@@ -22,8 +26,8 @@
   flex-grow: 1;
 
   width: 55px;
-  min-width: 50px;
-  max-width: 60px;
+  min-width: 55px;
+  max-width: 55px;
   padding-top: 30px;
   padding-bottom: 5px;
 
