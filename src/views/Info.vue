@@ -1,25 +1,34 @@
 <template>
   <div class="info">
-      <h1>Выбрать видео</h1>
-      <el-button @click="openFileLoadModal">Загрузить видео</el-button>
+    <h1>Выбрать видео</h1>
+    <h2> {{ this.$store.getters.getVideoPath }} </h2>
+    <el-button @click="openFileLoadModal">Загрузить видео</el-button>
   </div>
 </template>
 
 <script>
+
+import { mapMutations } from "vuex";
+
 export default {
   name: "Info",
 
   methods: {
-    openFileLoadModal: () => {
-      const remote = require("electron").remote
-      const dialog = remote.dialog
+    ...mapMutations(["setVideoPath", "deleteVideoPath"]),
 
-      dialog.showOpenDialog(remote.getCurrentWindow(), { properties: ["openFile"] })
-      .then(result => {
+    openFileLoadModal: function() {
+      const remote = require("electron").remote;
+      const dialog = remote.dialog;
+
+      dialog
+        .showOpenDialog(remote.getCurrentWindow(), { properties: ["openFile"] })
+        .then((result) => {
           if (result.canceled === false)
-              console.log(result.filePaths);
-      });
-    }
-  }
-}
+          {
+              this.setVideoPath(result.filePaths[0]);
+          }
+        });
+    },
+  },
+};
 </script>

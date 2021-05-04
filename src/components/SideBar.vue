@@ -1,10 +1,16 @@
 <template>
   <div class="sidebar">
-    <router-link to="/info" class="sidebar__button"><i class="el-icon-film"></i></router-link>
+    <router-link to="/info" class="sidebar__button"
+      ><i class="el-icon-film"></i
+    ></router-link>
 
-    <router-link to="/cut" class="sidebar__button disabled"><i class="el-icon-scissors"></i></router-link>
+    <router-link to="/cut" class="sidebar__button disabled"
+      ><i class="el-icon-scissors"></i
+    ></router-link>
 
-    <router-link to="/setting" class="sidebar__button setting"><i class="el-icon-s-tools"></i></router-link>
+    <router-link to="/setting" class="sidebar__button setting"
+      ><i class="el-icon-s-tools"></i
+    ></router-link>
   </div>
 </template>
 

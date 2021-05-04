@@ -1,24 +1,22 @@
 <template>
-
   <SideBar />
   <div class="content">
     <TitleBar />
-    <router-view/>
+    <router-view />
   </div>
-
 </template>
 
 <script>
 import TitleBar from "./components/TitleBar.vue";
 import SideBar from "./components/SideBar.vue";
 
-export default {
+export default {  
   name: "App",
   components: {
     SideBar,
-    TitleBar
+    TitleBar,
   },
-};
+}
 </script>
 
-<style src="./assets/css/general.css"> </style>
+<style src="./assets/css/general.css"></style>
