@@ -1,10 +1,14 @@
 <template>
-  <div class="info">
+  <el-main class="info">
+    
     <h1>Выбрать видео</h1>
     <h4> Путь: {{ this.$store.getters.getVideoPath }} </h4>
+
     <el-button @click="openFileLoadModal">Загрузить видео</el-button>
-    <el-button @click="deleteVideoPath">Удалить видео</el-button>
-  </div>
+
+    <el-button @click="deleteVideoPath" :disabled="!this.$store.getters.getVideoLoaded">Удалить видео</el-button>
+
+  </el-main>
 </template>
 
 <script>
