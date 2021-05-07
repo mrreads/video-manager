@@ -8,9 +8,15 @@ import App from "./App.vue";
 import router from "./router";
 import store from './store'
 
-const app = createApp(App).use(store).use(router);
+import videoManager from './mixins/videoManager';
+
+const app = createApp(App)
+            .use(store)
+            .use(router);
 
 app.use(ElementPlus);
 app.use(store);
+
+app.mixin(videoManager);
 
 app.mount("#app");
