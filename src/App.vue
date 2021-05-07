@@ -1,9 +1,11 @@
 <template>
+
   <SideBar />
   <div class="content">
     <TitleBar />
     <router-view />
   </div>
+
 </template>
 
 <script>
