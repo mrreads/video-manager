@@ -1,0 +1,73 @@
+{
+    "size": {
+        "bytes": "байт",
+        "KB": "Кбайт",
+        "MB": "Мбайт",
+        "GB": "Гбайт",
+        "TB": "Тбайт",
+        "PB": "Пбайт",
+        "EB": "Пбайт",
+        "ZB": "Збайт",
+        "YB": "Ибайт",
+
+        "bytes/s": "бит/c",
+        "KB/s": "кбит/c",
+        "MB/s": "Мбит/c",
+        "GB/s": "Гбит/c",
+        "TB/s": "Тбит/c",
+        "PB/s": "Пбит/c",
+        "EB/s": "Пбит/c",
+        "ZB/s": "Збит/c",
+        "YB/s": "Ибит/c"
+    },
+
+    "time": {
+        "second": "Секунд"
+    },
+
+    "info": {
+        "title_choose": "Выберите видео",
+        "select": "Загрузить видео",
+        "delete": "Удалить видео",
+        
+        "title_info": "Информация о видео",
+        "general_info": "Общая информация",
+        "general_path": "Путь",
+        "general_size": "Размер",
+        "general_bitrate": "Битрейт",
+        "general_duration": "Длительность",
+
+        "title_additional": "Дополнительная информация",
+
+        "additional_video": "Видео",
+        "additional_codec": "Кодек",
+        "additional_codec_full": "Полное название кодека",
+        "additional_height": "Высота",
+        "additional_width": "Ширина",
+        "additional_aspect": "Соотношение сторон экрана",
+        "additional_framerate": "Частота кадров",
+        "additional_raw_sample": "Битность видео",
+
+        "additional_audio": "Аудио",
+        "additional_bitrate": "Битрейт",
+
+        "additional_subtitle": "Субтитры",
+        "additional_codec_code": "Код кодека",
+        "additional_lang": "Язык",
+        "additional_lang_code": "Код языка",
+
+        "additional_attachment": "Вложения",
+        "additional_type": "Тип",
+        "additional_format": "Формат",
+        "additional_namefile": "Название файла",
+        "additional_mine": "MIME-TIP файла"
+    },
+
+    "cut": {
+        "title": "Обрезать Видео"
+    },
+
+    "setting": {
+        "title": "Настройки"
+    }
+}

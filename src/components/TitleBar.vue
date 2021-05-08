@@ -17,43 +17,38 @@
 export default {
   name: "Info",
 
-  created: function() {
-    const win = window.require('electron').remote.getCurrentWindow();
+  created: function () {
+    const win = window.require("electron").remote.getCurrentWindow();
 
-    document.onreadystatechange = () => 
-    {
-        if (document.readyState === "complete") 
-        {
-            handleWindowControls();
-        }
+    document.onreadystatechange = () => {
+      if (document.readyState === "complete") {
+        handleWindowControls();
+      }
     };
-    window.onbeforeunload = () => 
-    {
-        win.removeAllListeners();
-    }
-    function handleWindowControls() 
-    {
-        document.getElementById('title__minimize').addEventListener("click", () => {
-            win.minimize();
+    window.onbeforeunload = () => {
+      win.removeAllListeners();
+    };
+    function handleWindowControls() {
+      document
+        .getElementById("title__minimize")
+        .addEventListener("click", () => {
+          win.minimize();
         });
 
-        document.getElementById('title__resize').addEventListener("click", () => {
-            if (win.isMaximized())
-            {
-                win.unmaximize();
-            }
-            else
-            {
-                win.maximize();
-            }
-        });
+      document.getElementById("title__resize").addEventListener("click", () => {
+        if (win.isMaximized()) {
+          win.unmaximize();
+        } else {
+          win.maximize();
+        }
+      });
 
-        document.getElementById('title__close').addEventListener("click", () => {
-            win.close();
-        });
+      document.getElementById("title__close").addEventListener("click", () => {
+        win.close();
+      });
     }
-  }
-}
+  },
+};
 </script>
 
 <style scoped>

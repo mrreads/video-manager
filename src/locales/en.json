@@ -1,0 +1,73 @@
+{
+  "size": {
+      "bytes": "bytes",
+      "KB": "KB",
+      "MB": "MB",
+      "GB": "GB",
+      "TB": "TB",
+      "PB": "PB",
+      "EB": "EB",
+      "ZB": "ZB",
+      "YB": "YB",
+
+      "bytes/s": "bit/s",
+      "KB/s": "kbit/s",
+      "MB/s": "Mbit/s",
+      "GB/s": "Gbit/s",
+      "TB/s": "Tbit/s",
+      "PB/s": "Pbit/s",
+      "EB/s": "Ebit/s",
+      "ZB/s": "Zbit/s",
+      "YB/s": "Ybit/s"
+  },
+
+  "time": {
+    "second": "Second"
+  },
+
+  "info": {
+        "title_choose": "Select video",
+        "select": "Upload video",
+        "delete": "Delete video",
+        
+        "title_info": "Video info",
+        "general_info": "General information",
+        "general_path": "Path",
+        "general_size": "Size",
+        "general_bitrate": "Bitrate",
+        "general_duration": "Duration",
+
+        "title_additional": "Additional information",
+        
+        "additional_video": "Video",
+        "additional_codec": "Codec",
+        "additional_codec_full": "Full Codec name",
+        "additional_height": "Height",
+        "additional_width": "Width",
+        "additional_aspect": "Screen Aspect Ratio",
+        "additional_framerate": "frame Rate",
+        "additional_raw_sample": "Video Bitrate",
+
+        "additional_audio": "Audio",
+        "additional_bitrate": "Bitrate",
+
+        "additional_subtitle": "Subtitle",
+        "additional_codec_code": "Codec code",
+        "additional_lang": "Language",
+        "additional_lang_code": "Language code",
+
+        "additional_attachment": "Attachments",
+        "additional_type": "Type",
+        "additional_format": "Format",
+        "additional_namefile": "File Name",
+        "additional_mine": "MIME-TIP type"
+  },
+
+  "cut": {
+    "title": "Cut Video"
+  },
+
+  "setting": {
+    "title": "Settings"
+  }
+}
