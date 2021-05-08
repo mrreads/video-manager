@@ -31,5 +31,17 @@ body
 
 .content
 {
+    width: calc(100% - 55px);
 	flex-grow: 1;
+}
+
+.info.tech p
+{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.info strong
+{
+    margin-right: 10px;
 }
