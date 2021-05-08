@@ -1,5 +1,6 @@
 <template>
   <div class="titlebar">
+    <div class="title"></div>
     <div id="title__minimize" class="titlebar__button">
       <i class="el-icon-bottom-left"></i>
     </div>
@@ -12,6 +13,49 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "Info",
+
+  created: function() {
+    const win = window.require('electron').remote.getCurrentWindow();
+
+    document.onreadystatechange = () => 
+    {
+        if (document.readyState === "complete") 
+        {
+            handleWindowControls();
+        }
+    };
+    window.onbeforeunload = () => 
+    {
+        win.removeAllListeners();
+    }
+    function handleWindowControls() 
+    {
+        document.getElementById('title__minimize').addEventListener("click", () => {
+            win.minimize();
+        });
+
+        document.getElementById('title__resize').addEventListener("click", () => {
+            if (win.isMaximized())
+            {
+                win.unmaximize();
+            }
+            else
+            {
+                win.maximize();
+            }
+        });
+
+        document.getElementById('title__close').addEventListener("click", () => {
+            win.close();
+        });
+    }
+  }
+}
+</script>
+
 <style scoped>
 .titlebar {
   display: flex;
@@ -21,6 +65,11 @@
 
   max-height: 35px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.titlebar > .title {
+  flex-grow: 1;
+  -webkit-app-region: drag;
 }
 
 .titlebar__button {
