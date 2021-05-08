@@ -36,7 +36,7 @@ body
 	flex-grow: 1;
 }
 
-.info.tech p
+.info p
 {
     display: flex;
     flex-flow: row nowrap;

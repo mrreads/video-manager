@@ -46,10 +46,9 @@
           <el-tab-pane label="Дополнительная информация" name="additional">
               <el-tabs tabPosition="left">
 
-                <el-tab-pane label="Видео">
-
+                <el-tab-pane v-if="videoInfo_video.length > 0" label="Видео">
                     <el-tabs tab-position="top" class="audio_stream">
-                      <el-tab-pane :label="s.tags.title" v-for="s in videoInfo_video" :key="s.index">
+                      <el-tab-pane :label="(s.tags?.title) ? s.tags.title : s.codec_name" v-for="s in videoInfo_video" :key="s.index">
                         <div class="content_info">
                           <p> <strong> Кодек: </strong> {{ s.codec_name }} </p>
                           <p class="additional"> <strong> Полное название кодека: </strong> {{ s.codec_long_name }} </p>
@@ -67,12 +66,11 @@
                  
                 </el-tab-pane>
 
-                <el-tab-pane label="Аудио">
-
+                <el-tab-pane v-if="videoInfo_audio.length > 0" label="Аудио">
                   <el-tabs tab-position="top" class="video_stream">
-                      <el-tab-pane :label="s.tags.title" v-for="s in videoInfo_audio" :key="s.index">
+                      <el-tab-pane :label="(s.tags?.title) ? s.tags.title : s.codec_name" v-for="s in videoInfo_audio" :key="s.index">
                         <div class="content_info">
-                          <p> <strong> Язык: </strong> {{ s.tags.title }}</p>
+                          <p v-if="s.tags?.title"> <strong> Язык: </strong> {{ s.tags?.title }}</p>
 
                           <p :title="s.codec_long_name"> <strong> Кодек: </strong> {{ s.codec_name }}</p>
                           <p class="additional"> <strong> Битрейт: </strong> {{ s.sample_rate }}</p>
@@ -82,32 +80,32 @@
 
                 </el-tab-pane>
 
-                <el-tab-pane label="Субтитры">
-
+                <el-tab-pane v-if="videoInfo_subtitle.length > 0" label="Субтитры">
+                  
                   <el-tabs tab-position="top" class="video_stream">
-                    <el-tab-pane :label="s.tags.title" v-for="s in videoInfo_subtitle" :key="s.index">
+                    <el-tab-pane :label="(s.tags?.title) ? s.tags.title : s.codec_name" v-for="s in videoInfo_subtitle" :key="s.index">
                       <div class="content_info">
-                        <p> <strong> Язык: </strong> {{ s.tags.title }} </p>
-                        <p class="additional"> <strong> Код языка: </strong> {{ s.tags.language }} </p>
-
                         <p> <strong> Кодек: </strong> {{ s.codec_long_name }} </p>
                         <p class="additional"> <strong> Код кодека: </strong> {{ s.codec_name }} </p>
+
+                        <p v-if="s.tags?.title"> <strong> Язык: </strong> {{ s.tags?.title }} </p>
+                        <p v-if="s.tags?.language" :class="(s.tags?.title) ? 'additional' : ''"> <strong> Код языка: </strong> {{ s.tags?.language }} </p>
                        </div>
                     </el-tab-pane>
                   </el-tabs>
                 
                 </el-tab-pane>
 
-                <el-tab-pane label="Вложения">
+                <el-tab-pane v-if="videoInfo_attachment.length > 0" label="Вложения">
 
                   <el-tabs tab-position="top" class="video_stream">
-                    <el-tab-pane :label="s.tags.filename" v-for="s in videoInfo_attachment" :key="s.index">
+                    <el-tab-pane :label="(s.tags?.filename) ? s.tags?.filename : s.codec_name" v-for="s in videoInfo_attachment" :key="s.index">
                       <div class="content_info">
                         <p> <strong> Тип: </strong> {{ s.codec_long_name }} </p>
                         <p class="additional"> <strong> Формат: </strong> {{ s.codec_name }} </p>
 
-                        <p> <strong> Название файла: </strong> {{ s.tags.filename }} </p>
-                        <p class="additional"> <strong> MIME-TIP файла: </strong> {{ s.tags.mimetype }} </p>
+                        <p v-if="s.tags?.filename"> <strong> Название файла: </strong> {{ s.tags?.filename }} </p>
+                        <p v-if="s.tags?.mimetype" class="additional"> <strong> MIME-TIP файла: </strong> {{ s.tags.mimetype }} </p>
                        </div>
                     </el-tab-pane>
                   </el-tabs>
