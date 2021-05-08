@@ -22,7 +22,9 @@
   },
 
   "time": {
-    "second": "Second"
+    "hour": "hour",
+    "minute": "minute",
+    "second": "second"
   },
 
   "info": {

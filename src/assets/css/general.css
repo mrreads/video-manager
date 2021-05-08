@@ -47,7 +47,7 @@ body
     margin-right: 10px;
 }
 
-.info p.additional
+p.additional
 {
 	margin-top: -1em;
 }
@@ -77,6 +77,34 @@ body
     margin-bottom: 0;
 }
 
+.timepicker_wrapper
+{
+	display: flex;
+	flex-flow: row nowrap;
+}
+.timepicker
+{
+	flex-grow: 1;
+	margin: 0 15px;
+}
+
+@media screen and (max-width: 700px)
+{
+	.timepicker_wrapper
+	{
+		flex-flow: column nowrap;
+	}
+	.timepicker_wrapper .timepicker
+	{
+		margin: 15px 0;
+		width: 100%;
+	}
+	.timepicker_wrapper .timepicker_button
+	{
+		margin-left: 0;
+		margin: 5px 0;
+	}
+}
 /* SCROLL */
 
 *::-webkit-scrollbar
