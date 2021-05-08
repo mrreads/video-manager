@@ -63,6 +63,20 @@ body
     height: 100%;
 }
 
+.setting
+{
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+}
+
+.setting p
+{
+	padding-right: 25px;
+	margin-top: 0;
+    margin-bottom: 0;
+}
+
 /* SCROLL */
 
 *::-webkit-scrollbar
