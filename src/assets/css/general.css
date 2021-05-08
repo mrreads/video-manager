@@ -62,3 +62,29 @@ body
 	overflow: scroll;
     height: 100%;
 }
+
+/* SCROLL */
+
+*::-webkit-scrollbar
+{
+	width: 13px;
+
+	background-color: #FFFFFF;
+}
+
+*::-webkit-scrollbar-track
+{
+	background-color: #FFFFFF;
+}
+
+*::-webkit-scrollbar-thumb
+{
+	border: 5px solid #FFFFFF;
+	border-radius: 16px;
+	background-color: #BABAC0;
+}
+
+*::-webkit-scrollbar-button
+{
+	display: none;
+}
