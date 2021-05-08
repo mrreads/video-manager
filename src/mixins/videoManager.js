@@ -13,7 +13,7 @@ export default {
                 
                 let data = JSON.parse(execSync(command));
                 
-                this.VM_videoInfo = data;
+                console.log(data);
                 return data;
             }
             else

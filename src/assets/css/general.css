@@ -45,3 +45,8 @@ body
 {
     margin-right: 10px;
 }
+
+.info p.additional
+{
+	margin-top: -1em;
+}

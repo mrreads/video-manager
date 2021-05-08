@@ -42,7 +42,31 @@
           </el-tab-pane>
 
           <el-tab-pane label="Дополнительная информация" name="additional">
-            <p> фывфыв </p>
+              <el-tabs tabPosition="left" style="height: 200px;">
+                <el-tab-pane label="Видео">
+                  <div class="audio_stream" v-for="s in videoInfo_video" :key="s.index">
+                    <p :title="s.codec_long_name"> <strong> Кодек: </strong> {{ s.codec_name }} </p>
+
+                    <p :title="s.coded_width + 'x' + s.coded_height"> <strong> Высота: </strong> {{ s.coded_height }}</p>
+                    <p class="additional" :title="s.coded_width + 'x' + s.coded_height"> <strong> Ширина: </strong> {{ s.coded_width }}</p>
+
+                    <p class="additional"> <strong> Соотношение сторон экрана: </strong> {{ s.display_aspect_ratio }}</p>
+
+                    <p> <strong> Частота кадров: </strong> {{ convertFrameRate(s.r_frame_rate) }}</p>
+                    <p class="additional"> <strong> Битность видео: </strong> {{ s.bits_per_raw_sample }}</p>
+                  </div>
+                </el-tab-pane>
+                <el-tab-pane label="Аудио">
+                  <div class="audio_stream" v-for="s in videoInfo_audio" :key="s.index">
+                    {{ s }}
+                  </div>
+                </el-tab-pane>
+                <el-tab-pane label="Субтитры">
+                  <div class="audio_stream" v-for="s in videoInfo_subtitle" :key="s.index">
+                    {{ s }}
+                  </div>
+                </el-tab-pane>
+              </el-tabs>
           </el-tab-pane>
         </el-tabs>
       
@@ -53,7 +77,6 @@
 </template>
 
 <script>
-
 import { mapMutations } from "vuex";
 
 export default {
@@ -90,7 +113,19 @@ export default {
       const i = Math.floor(Math.log(bytes) / Math.log(k));
 
       return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
-    }
+    },
+
+    videoInfo_video: function() {
+      return this.getVideoInfo.streams.filter(s => s.codec_type == 'video')
+    },
+
+    videoInfo_audio: function() {
+      return this.getVideoInfo.streams.filter(s => s.codec_type == 'audio')
+    },
+
+    videoInfo_subtitle: function() {
+      return this.getVideoInfo.streams.filter(s => s.codec_type == 'subtitle')
+    },
   },
 
   methods: {
@@ -109,6 +144,10 @@ export default {
           }
         });
     },
+
+    convertFrameRate: function(fps) {
+      return eval(fps).toFixed(2);
+    }
   },
 };
 </script>
