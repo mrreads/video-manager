@@ -42,30 +42,56 @@
           </el-tab-pane>
 
           <el-tab-pane label="Дополнительная информация" name="additional">
-              <el-tabs tabPosition="left" style="height: 200px;">
+              <el-tabs tabPosition="left">
+
                 <el-tab-pane label="Видео">
-                  <div class="audio_stream" v-for="s in videoInfo_video" :key="s.index">
-                    <p :title="s.codec_long_name"> <strong> Кодек: </strong> {{ s.codec_name }} </p>
 
-                    <p :title="s.coded_width + 'x' + s.coded_height"> <strong> Высота: </strong> {{ s.coded_height }}</p>
-                    <p class="additional" :title="s.coded_width + 'x' + s.coded_height"> <strong> Ширина: </strong> {{ s.coded_width }}</p>
+                    <el-tabs tab-position="top" class="audio_stream">
+                      <el-tab-pane :label="s.tags.title" v-for="s in videoInfo_video" :key="s.index">
+                        <p> <strong> Кодек: </strong> {{ s.codec_name }} </p>
+                        <p class="additional"> <strong> Полное название кодека: </strong> {{ s.codec_long_name }} </p>
 
-                    <p class="additional"> <strong> Соотношение сторон экрана: </strong> {{ s.display_aspect_ratio }}</p>
+                        <p :title="s.coded_width + 'x' + s.coded_height"> <strong> Высота: </strong> {{ s.coded_height }}</p>
+                        <p class="additional" :title="s.coded_width + 'x' + s.coded_height"> <strong> Ширина: </strong> {{ s.coded_width }}</p>
 
-                    <p> <strong> Частота кадров: </strong> {{ convertFrameRate(s.r_frame_rate) }}</p>
-                    <p class="additional"> <strong> Битность видео: </strong> {{ s.bits_per_raw_sample }}</p>
-                  </div>
+                        <p class="additional"> <strong> Соотношение сторон экрана: </strong> {{ s.display_aspect_ratio }}</p>
+
+                        <p> <strong> Частота кадров: </strong> {{ convertFrameRate(s.r_frame_rate) }}</p>
+                        <p class="additional"> <strong> Битность видео: </strong> {{ s.bits_per_raw_sample }}</p>
+                      </el-tab-pane>
+                    </el-tabs>
+                 
                 </el-tab-pane>
+
                 <el-tab-pane label="Аудио">
-                  <div class="audio_stream" v-for="s in videoInfo_audio" :key="s.index">
-                    {{ s }}
-                  </div>
+
+                  <el-tabs tab-position="top" class="video_stream">
+                    <el-tab-pane :label="s.tags.title" v-for="s in videoInfo_audio" :key="s.index">
+                      <p> <strong> Язык: </strong> {{ s.tags.title }}</p>
+
+                      <p :title="s.codec_long_name"> <strong> Кодек: </strong> {{ s.codec_name }}</p>
+                      <p class="additional"> <strong> Битрейт: </strong> {{ s.sample_rate }}</p>
+                    </el-tab-pane>
+                  </el-tabs>
+
                 </el-tab-pane>
-                <el-tab-pane label="Субтитры">
-                  <div class="audio_stream" v-for="s in videoInfo_subtitle" :key="s.index">
-                    {{ s }}
-                  </div>
+
+                <el-tab-pane label="Видео">
+
+                  <el-tabs tab-position="top" class="video_stream">
+                    <el-tab-pane :label="s.tags.title" v-for="s in videoInfo_subtitle" :key="s.index">
+
+                      <p> <strong> Язык: </strong> {{ s.tags.title }} </p>
+                      <p class="additional"> <strong> Код языка: </strong> {{ s.tags.language }} </p>
+
+                      <p> <strong> Кодек: </strong> {{ s.codec_long_name }} </p>
+                      <p class="additional"> <strong> Код кодека: </strong> {{ s.codec_name }} </p>
+                      
+                    </el-tab-pane>
+                  </el-tabs>
+                
                 </el-tab-pane>
+
               </el-tabs>
           </el-tab-pane>
         </el-tabs>
