@@ -24,21 +24,23 @@
         <el-tabs v-model="activeName">
 
           <el-tab-pane label="Общая информация" name="general">
-            <p :title="getVideoInfo?.format.filename"> 
-              <strong> Путь: </strong> {{ getVideoInfo?.format.filename }} 
-            </p>
+            <div class="content_info">
+              <p :title="getVideoInfo?.format.filename"> 
+                <strong> Путь: </strong> {{ getVideoInfo?.format.filename }} 
+              </p>
 
-            <p :title="getVideoInfo?.format.size + ' байт'"> 
-              <strong> Размер: </strong> {{ fileSize }} 
-            </p>
+              <p :title="getVideoInfo?.format.size + ' байт'"> 
+                <strong> Размер: </strong> {{ fileSize }} 
+              </p>
 
-            <p :title="getVideoInfo?.format.bit_rate + ' бит  '"> 
-              <strong> Битрейт: </strong> {{ videoBitrate }}
-            </p>
+              <p :title="getVideoInfo?.format.bit_rate + ' бит  '"> 
+                <strong> Битрейт: </strong> {{ videoBitrate }}
+              </p>
 
-            <p :title="getVideoInfo?.format.duration + ' секунд'"> 
-              <strong> Длительность: </strong> {{ new Date(getVideoInfo?.format.duration * 1000).toISOString().substr(11, 8) }} 
-            </p>
+              <p :title="getVideoInfo?.format.duration + ' секунд'"> 
+                <strong> Длительность: </strong> {{ new Date(getVideoInfo?.format.duration * 1000).toISOString().substr(11, 8) }} 
+              </p>
+            </div>
           </el-tab-pane>
 
           <el-tab-pane label="Дополнительная информация" name="additional">
@@ -48,16 +50,18 @@
 
                     <el-tabs tab-position="top" class="audio_stream">
                       <el-tab-pane :label="s.tags.title" v-for="s in videoInfo_video" :key="s.index">
-                        <p> <strong> Кодек: </strong> {{ s.codec_name }} </p>
-                        <p class="additional"> <strong> Полное название кодека: </strong> {{ s.codec_long_name }} </p>
+                        <div class="content_info">
+                          <p> <strong> Кодек: </strong> {{ s.codec_name }} </p>
+                          <p class="additional"> <strong> Полное название кодека: </strong> {{ s.codec_long_name }} </p>
 
-                        <p :title="s.coded_width + 'x' + s.coded_height"> <strong> Высота: </strong> {{ s.coded_height }}</p>
-                        <p class="additional" :title="s.coded_width + 'x' + s.coded_height"> <strong> Ширина: </strong> {{ s.coded_width }}</p>
+                          <p :title="s.coded_width + 'x' + s.coded_height"> <strong> Высота: </strong> {{ s.coded_height }}</p>
+                          <p class="additional" :title="s.coded_width + 'x' + s.coded_height"> <strong> Ширина: </strong> {{ s.coded_width }}</p>
 
-                        <p class="additional"> <strong> Соотношение сторон экрана: </strong> {{ s.display_aspect_ratio }}</p>
+                          <p class="additional"> <strong> Соотношение сторон экрана: </strong> {{ s.display_aspect_ratio }}</p>
 
-                        <p> <strong> Частота кадров: </strong> {{ convertFrameRate(s.r_frame_rate) }}</p>
-                        <p class="additional"> <strong> Битность видео: </strong> {{ s.bits_per_raw_sample }}</p>
+                          <p> <strong> Частота кадров: </strong> {{ convertFrameRate(s.r_frame_rate) }}</p>
+                          <p class="additional"> <strong> Битность видео: </strong> {{ s.bits_per_raw_sample }}</p>
+                        </div>
                       </el-tab-pane>
                     </el-tabs>
                  
@@ -66,32 +70,50 @@
                 <el-tab-pane label="Аудио">
 
                   <el-tabs tab-position="top" class="video_stream">
-                    <el-tab-pane :label="s.tags.title" v-for="s in videoInfo_audio" :key="s.index">
-                      <p> <strong> Язык: </strong> {{ s.tags.title }}</p>
+                      <el-tab-pane :label="s.tags.title" v-for="s in videoInfo_audio" :key="s.index">
+                        <div class="content_info">
+                          <p> <strong> Язык: </strong> {{ s.tags.title }}</p>
 
-                      <p :title="s.codec_long_name"> <strong> Кодек: </strong> {{ s.codec_name }}</p>
-                      <p class="additional"> <strong> Битрейт: </strong> {{ s.sample_rate }}</p>
-                    </el-tab-pane>
+                          <p :title="s.codec_long_name"> <strong> Кодек: </strong> {{ s.codec_name }}</p>
+                          <p class="additional"> <strong> Битрейт: </strong> {{ s.sample_rate }}</p>
+                        </div>
+                      </el-tab-pane>
                   </el-tabs>
 
                 </el-tab-pane>
 
-                <el-tab-pane label="Видео">
+                <el-tab-pane label="Субтитры">
 
                   <el-tabs tab-position="top" class="video_stream">
                     <el-tab-pane :label="s.tags.title" v-for="s in videoInfo_subtitle" :key="s.index">
+                      <div class="content_info">
+                        <p> <strong> Язык: </strong> {{ s.tags.title }} </p>
+                        <p class="additional"> <strong> Код языка: </strong> {{ s.tags.language }} </p>
 
-                      <p> <strong> Язык: </strong> {{ s.tags.title }} </p>
-                      <p class="additional"> <strong> Код языка: </strong> {{ s.tags.language }} </p>
-
-                      <p> <strong> Кодек: </strong> {{ s.codec_long_name }} </p>
-                      <p class="additional"> <strong> Код кодека: </strong> {{ s.codec_name }} </p>
-                      
+                        <p> <strong> Кодек: </strong> {{ s.codec_long_name }} </p>
+                        <p class="additional"> <strong> Код кодека: </strong> {{ s.codec_name }} </p>
+                       </div>
                     </el-tab-pane>
                   </el-tabs>
                 
                 </el-tab-pane>
 
+                <el-tab-pane label="Вложения">
+
+                  <el-tabs tab-position="top" class="video_stream">
+                    <el-tab-pane :label="s.tags.filename" v-for="s in videoInfo_attachment" :key="s.index">
+                      <div class="content_info">
+                        <p> <strong> Тип: </strong> {{ s.codec_long_name }} </p>
+                        <p class="additional"> <strong> Формат: </strong> {{ s.codec_name }} </p>
+
+                        <p> <strong> Название файла: </strong> {{ s.tags.filename }} </p>
+                        <p class="additional"> <strong> MIME-TIP файла: </strong> {{ s.tags.mimetype }} </p>
+                       </div>
+                    </el-tab-pane>
+                  </el-tabs>
+                
+                </el-tab-pane>
+                
               </el-tabs>
           </el-tab-pane>
         </el-tabs>
@@ -151,6 +173,10 @@ export default {
 
     videoInfo_subtitle: function() {
       return this.getVideoInfo.streams.filter(s => s.codec_type == 'subtitle')
+    },
+
+    videoInfo_attachment: function() {
+      return this.getVideoInfo.streams.filter(s => s.codec_type == 'attachment')
     },
   },
 
