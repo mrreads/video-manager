@@ -3,7 +3,10 @@
   <SideBar />
   <div class="content">
     <TitleBar />
-    <router-view />
+    <div class="main">
+      <router-view />
+    </div>
+
   </div>
 
 </template>
