@@ -11,7 +11,6 @@ export default {
         let command = `ffprobe -v quiet -print_format json -show_format -show_streams "${this.$store.getters.getVideoPath}"`;
 
         let data = JSON.parse(execSync(command));
-
         return data;
       } 
     },
