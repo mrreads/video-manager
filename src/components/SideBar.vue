@@ -6,6 +6,16 @@
 
     <router-link
       v-if="$store.getters.getVideoLoaded"
+      to="/convert"
+      class="sidebar__button"
+      ><i class="el-icon-s-operation"></i
+    ></router-link>
+    <div v-else class="sidebar__button disabled">
+      <i class="el-icon-s-operation"></i>
+    </div>
+
+    <router-link
+      v-if="$store.getters.getVideoLoaded"
       to="/cut"
       class="sidebar__button"
       ><i class="el-icon-scissors"></i

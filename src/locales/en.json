@@ -69,6 +69,10 @@
     "title": "Cut Video"
   },
 
+  "convert": {
+    "title": "Convert Video"
+  },
+
   "setting": {
     "title": "Settings",
     "select_lang": "Select language"
