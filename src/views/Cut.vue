@@ -5,24 +5,14 @@
   <el-main>
 
     <div class="block">
-      <el-slider 
+      <el-slider
+        :max="this.videoDuration"
         v-model="cutValue"
         :format-tooltip="formatTooltip"
-        range show-stops
-        :max="this.getVideoInfo.format.duration">
+        range show-stops>
       </el-slider>
     
-      <div class="timepicker_wrapper">
-        <el-tooltip :content="t('time.hour')"> <el-button size="mini" class="timepicker_button"> <strong>–</strong> </el-button> </el-tooltip>
-        <el-tooltip :content="t('time.minute')"> <el-button size="small" class="timepicker_button"> <strong>–</strong> </el-button> </el-tooltip>
-        <el-tooltip :content="t('time.second')"> <el-button size="medium" class="timepicker_button"> <strong>–</strong> </el-button> </el-tooltip>
-
-        <el-time-picker is-range disabled v-model="valTimePicker" class="timepicker"> </el-time-picker>
-        
-        <el-tooltip :content="t('time.hour')"> <el-button size="mini" class="timepicker_button"> <strong>+</strong> </el-button> </el-tooltip>
-        <el-tooltip :content="t('time.minute')"> <el-button size="small" class="timepicker_button"> <strong>+</strong> </el-button> </el-tooltip>
-        <el-tooltip :content="t('time.second')"> <el-button size="medium" class="timepicker_button"><strong>+</strong> </el-button> </el-tooltip>
-      </div>
+      <el-time-picker is-range disabled v-model="valTimePicker"> </el-time-picker>
       
     </div>
   </el-main>
@@ -82,13 +72,13 @@ export default
   methods: {
     formatTooltip(val) {
         return new Date(val * 1000).toISOString().substr(11, 8)
-      }
+    },
   },
 
   data() {
     return {
       videoInfo: this.getVideoInfo,
-      videoDuration: this.getVideoInfo.format.duration,
+      videoDuration: Math.floor(this.getVideoInfo.format.duration),
       
       cutValue: [0, this.getVideoInfo.format.duration],
     }
